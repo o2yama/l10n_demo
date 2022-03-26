@@ -11,11 +11,11 @@ class PrefsRepository {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  Future<void> setLang(String lang) async {
-    await _prefs.setString('langCode', lang);
+  Future<void> setLang(String languageCode) async {
+    await _prefs.setString('languageCode', languageCode);
   }
 
   String? get langCode {
-    return _prefs.getString('langCode');
+    return _prefs.getString('languageCode');
   }
 }

@@ -11,7 +11,7 @@ class LanguageService {
       'title': 'こんにちは、世界',
       'language': '日本語',
       'googleLogin': 'Googleログイン',
-    }
+    },
   };
 
   static set languageCodeSetter(String lang) {

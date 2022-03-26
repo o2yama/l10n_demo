@@ -34,14 +34,19 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   ListTile(
                     onTap: () async {
+                      // Englishに設定
                       await PrefsRepository().setLang('en');
+
+                      // アプリを再起動
                       Phoenix.rebirth(context);
                     },
                     title: const Text('English'),
                   ),
                   ListTile(
                     onTap: () async {
+                      // 日本語に設定
                       await PrefsRepository().setLang('ja');
+
                       Phoenix.rebirth(context);
                     },
                     title: const Text('日本語'),

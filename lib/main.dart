@@ -32,21 +32,24 @@ class MyApp extends StatelessWidget {
         Locale('ja', ''),
       ],
       localeResolutionCallback: (deviceLocale, supportedLocales) {
+        // 過去に保存したLanguageCode取得
         final storedLanguageCode = PrefsRepository().langCode;
 
         if (storedLanguageCode == null) {
+          // デバイスの言語設定がサポートされているか判定
           final isDeviceLocaleSupported = supportedLocales
               .map((e) => e.languageCode)
               .contains(deviceLocale?.languageCode);
 
+          // サポートされていればその言語を設定
+          // なければEnglishを設定
           isDeviceLocaleSupported
               ? LanguageService.languageCodeSetter = deviceLocale!.languageCode
               : LanguageService.languageCodeSetter = 'en';
         } else {
+          // 言語設定を過去に保存していた場合、その言語設定を適応
           LanguageService.languageCodeSetter = storedLanguageCode;
         }
-
-        debugPrint('LanguageCode: ${LanguageService.languageCode}');
 
         return Locale(LanguageService.languageCode);
       },
